@@ -22,7 +22,7 @@ LMV é uma plataforma online dedicada a entusiastas do cinema, oferecendo uma ex
 - Interface Amigável e Responsiva: O site oferece uma interface amigável e responsiva, acessível em dispositivos desktop e móveis, garantindo uma experiência consistente e agradável em qualquer plataforma.
 
 ## 2) Paleta de cores:
-![Paleta de cores do site](paleta.jpg)
+![Paleta de cores do site](mypalette.pdf)
 
 ## 3) Tipografia:
 
