@@ -19,7 +19,9 @@ LMV é uma plataforma online dedicada a entusiastas do cinema, oferecendo uma ex
 - Playlist Personalizada: Os usuários podem criar suas próprias playlists de filmes, organizando-os de acordo com seus interesses, humor ou ocasião. Essas playlists são totalmente personalizáveis, permitindo adicionar, reordenar e excluir filmes conforme desejado.
 - Avaliações e Comentários: Os usuários podem avaliar os filmes assistidos e deixar comentários para compartilhar suas opiniões e recomendações com outros usuários da plataforma.
 - Rede de Amigos: Os usuários podem adicionar amigos à sua rede dentro da plataforma, permitindo acesso às playlists uns dos outros.
-- Interface Amigável e Responsiva: O site oferece uma interface amigável e responsiva, acessível em dispositivos desktop e móveis, garantindo uma experiência consistente e agradável em qualquer plataforma.
+- Interface Amigável e Responsiva: O site oferece uma interface amigável e responsiva, acessível em dispositivos desktop e móveis, garantindo uma experiência consistente e agradável em qualquer plataforma. 
+
+[Layout]([https://exemplo.com/](https://www.figma.com/file/GcYnAASx2nxlkRsSgzyGe5/Site-de-avalia%C3%A7%C3%A3o-de-filmes?type=design&node-id=0%3A1&mode=design&t=UhqsWvyFgIFAdmxU-1))
 
 ## 2) Paleta de cores:
 <html>
