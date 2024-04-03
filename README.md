@@ -42,7 +42,6 @@ LMV é uma plataforma online dedicada a entusiastas do cinema, oferecendo uma ex
 ### Clean Code:
 - Princípio KISS (Keep It Simple, Stupid): Mantenha o código simples e direto, evitando complexidade desnecessária.
 - Princípio DRY (Don't Repeat Yourself): Evite duplicação de código, encapsulando lógicas repetitivas em funções ou classes reutilizáveis.
-- Princípio SRP (Single Responsibility Principle): Cada classe ou função deve ter apenas uma razão para mudar, ou seja, deve ter apenas uma responsabilidade.
 - Princípio SOLID: Adote os princípios SOLID (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) para criar código mais modular e flexível.
 - Formatação Consistente: Mantenha uma formatação consistente em todo o código, seguindo convenções de estilo da linguagem.
 
