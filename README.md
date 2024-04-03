@@ -52,4 +52,3 @@ LMV é uma plataforma online dedicada a entusiastas do cinema, oferecendo uma ex
 - Criptografia: Utilize algoritmos de criptografia seguros para proteger informações sensíveis, como senhas e dados financeiros.
 - Gerenciamento de Sessões e Tokens: Mantenha as sessões autenticadas seguras e utilize tokens de acesso com tempo de expiração para limitar a janela de ataque.
 - Atualizações e Patches: Mantenha o software atualizado, aplicando regularmente patches de segurança e atualizações fornecidas pelos fornecedores e comunidades de software.
-```
