@@ -19,12 +19,19 @@ LMV é uma plataforma online dedicada a entusiastas do cinema, oferecendo uma ex
 - Playlist Personalizada: Os usuários podem criar suas próprias playlists de filmes, organizando-os de acordo com seus interesses, humor ou ocasião. Essas playlists são totalmente personalizáveis, permitindo adicionar, reordenar e excluir filmes conforme desejado.
 - Avaliações e Comentários: Os usuários podem avaliar os filmes assistidos e deixar comentários para compartilhar suas opiniões e recomendações com outros usuários da plataforma.
 - Rede de Amigos: Os usuários podem adicionar amigos à sua rede dentro da plataforma, permitindo acesso às playlists uns dos outros.
-- Interface Amigável e Responsiva: O site oferece uma interface amigável e responsiva, acessível em dispositivos desktop e móveis, garantindo uma experiência consistente e agradável em qualquer plataforma.
+- Interface Amigável e Responsiva: O site oferece uma interface amigável e responsiva, acessível em dispositivos desktop e móveis, garantindo uma experiência consistente e agradável em qualquer plataforma. 
+
+[Layout](https://www.figma.com/file/GcYnAASx2nxlkRsSgzyGe5/Site-de-avalia%C3%A7%C3%A3o-de-filmes?type=design&node-id=0%3A1&mode=design&t=UhqsWvyFgIFAdmxU-1)
 
 ## 2) Paleta de cores:
-![Paleta de cores do site](mypalette.pdf)
+<html>
+  <img src="./docs/paleta.jpg">
+</html>
 
 ## 3) Tipografia:
+<html>
+  <img src="./docs/tipografia.jpg">
+</html>
 
 ## 4) Requisitos:
 ### Boas Práticas de Programação:
@@ -37,7 +44,6 @@ LMV é uma plataforma online dedicada a entusiastas do cinema, oferecendo uma ex
 ### Clean Code:
 - Princípio KISS (Keep It Simple, Stupid): Mantenha o código simples e direto, evitando complexidade desnecessária.
 - Princípio DRY (Don't Repeat Yourself): Evite duplicação de código, encapsulando lógicas repetitivas em funções ou classes reutilizáveis.
-- Princípio SRP (Single Responsibility Principle): Cada classe ou função deve ter apenas uma razão para mudar, ou seja, deve ter apenas uma responsabilidade.
 - Princípio SOLID: Adote os princípios SOLID (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) para criar código mais modular e flexível.
 - Formatação Consistente: Mantenha uma formatação consistente em todo o código, seguindo convenções de estilo da linguagem.
 
@@ -47,4 +53,3 @@ LMV é uma plataforma online dedicada a entusiastas do cinema, oferecendo uma ex
 - Criptografia: Utilize algoritmos de criptografia seguros para proteger informações sensíveis, como senhas e dados financeiros.
 - Gerenciamento de Sessões e Tokens: Mantenha as sessões autenticadas seguras e utilize tokens de acesso com tempo de expiração para limitar a janela de ataque.
 - Atualizações e Patches: Mantenha o software atualizado, aplicando regularmente patches de segurança e atualizações fornecidas pelos fornecedores e comunidades de software.
-```
