@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import LoggedLayout from './layout';
 import Login from './pages/login';
+import Home from './pages/home';
 
 function App() {
     const theme = createTheme({
@@ -29,7 +30,8 @@ function App() {
             <Router>
                 <Routes>
                     <Route element={<LoggedLayout />}>
-                        <Route path="/" element={<Login />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/" element={<Home />} />
                     </Route>
                 </Routes>
             </Router>
