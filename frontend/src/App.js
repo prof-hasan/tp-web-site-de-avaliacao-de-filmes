@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import LoggedLayout from './layout';
 import Login from './pages/login';
 import Home from './pages/home';
+import MovieListing from './pages/movieListing'
 
 function App() {
     const theme = createTheme({
@@ -30,6 +31,7 @@ function App() {
             <Router>
                 <Routes>
                     <Route element={<LoggedLayout />}>
+                        <Route path="/movieListing" element={<MovieListing />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/" element={<Home />} />
                     </Route>
