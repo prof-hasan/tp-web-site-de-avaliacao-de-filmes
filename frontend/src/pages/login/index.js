@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#32d951'
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "75%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -85,10 +85,8 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+
 }));
-
-
-
 
 const Login = () => {
   const classes = useStyles();
@@ -126,6 +124,7 @@ const Login = () => {
             </div>
                <Divider />
               <form className={classes.form} noValidate onSubmit={handleSubmit}>
+              
                 <TextField
                   variant="outlined"
                   margin="normal"
