@@ -1,44 +1,18 @@
-import React from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
-import {
-  Avatar,
-  CssBaseline,
-  Grid,
-  Typography,
-  Container,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Box,
-  Link,
-  Button
-} from '@material-ui/core';
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { CssBaseline, Container } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import Header from "../../components/header"; // Ajuste o caminho conforme necessário
+import MovieCard from '../../components/movieCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    overflowX: 'hidden',
   },
   container: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-  },
-  table: {
-    minWidth: 650,
-  },
-  avatar: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
-  rating: {
-    display: 'flex',
     alignItems: 'center',
   },
 }));
@@ -50,7 +24,8 @@ const movies = [
     duration: "1h 59m",
     year: 2007,
     platform: "Netflix",
-    rating: 3
+    rating: 3,
+    seen: true
   },
   {
     title: "Vingadores: Ultimato",
@@ -58,7 +33,8 @@ const movies = [
     duration: "3h 2m",
     year: 2019,
     platform: "Disney+",
-    rating: 5
+    rating: 5,
+    seen: true
   },
   {
     title: "Um sonho de liberdade",
@@ -66,7 +42,8 @@ const movies = [
     duration: "2h 22m",
     year: 1994,
     platform: "HBO Max",
-    rating: 5
+    rating: 5,
+    seen: true
   },
   {
     title: "Não olhe para cima",
@@ -74,7 +51,8 @@ const movies = [
     duration: "2h 18m",
     year: 2021,
     platform: "Netflix",
-    rating: 0 // Avaliar
+    rating: 0, // Avaliar
+    seen: false
   },
   {
     title: "Pobres Criaturas",
@@ -82,7 +60,8 @@ const movies = [
     duration: "2h 2m",
     year: 2023,
     platform: "Star+",
-    rating: 2
+    rating: 2,
+    seen: false
   },
 ];
 
@@ -95,46 +74,9 @@ const MovieListing = () => {
       <Container component="main" maxWidth="md">
         <CssBaseline />
         <div className={classes.container}>
-          <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Poster</TableCell>
-                  <TableCell>Título</TableCell>
-                  <TableCell>Gênero</TableCell>
-                  <TableCell>Duração</TableCell>
-                  <TableCell>Ano</TableCell>
-                  <TableCell>Plataforma</TableCell>
-                  <TableCell>Avaliação</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {movies.map((movie) => (
-                  <TableRow key={movie.title}>
-                    <TableCell>
-                      <Avatar className={classes.avatar} src={`path_to_images/${movie.title.replace(/\s/g, '_')}.jpg`} />
-                    </TableCell>
-                    <TableCell>{movie.title}</TableCell>
-                    <TableCell>{movie.genre}</TableCell>
-                    <TableCell>{movie.duration}</TableCell>
-                    <TableCell>{movie.year}</TableCell>
-                    <TableCell>{movie.platform}</TableCell>
-                    <TableCell>
-                      {movie.rating ? (
-                        <Box className={classes.rating}>
-                          {Array.from({ length: movie.rating }).map((_, index) => (
-                            <span key={index}>⭐</span>
-                          ))}
-                        </Box>
-                      ) : (
-                        <Button variant="contained" color="primary">Avaliar</Button>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          {movies.map((movie) => (
+            <MovieCard key={movie.title} movie={movie} />
+          ))}
         </div>
       </Container>
     </div>

@@ -4,8 +4,9 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import LoggedLayout from './layout';
 import Login from './pages/login';
 import Home from './pages/home';
-import MovieListing from './pages/movieListing'
-import MovieCard from './pages/movieInfos';
+import MovieListing from './pages/movieListing';
+import MovieInfo from './pages/movieInfos';
+
 function App() {
     const theme = createTheme({
         palette: {
@@ -21,7 +22,8 @@ function App() {
         },
         typography: {
             fontFamily: [
-                'Poppins',
+                'Urbanist',
+                'sans-serif', // Adicione uma fonte fallback
             ].join(','),
         },
     });
@@ -34,7 +36,7 @@ function App() {
                         <Route path="/movieListing" element={<MovieListing />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/" element={<Home />} />
-                        <Route path="/movie" element={<MovieCard />} />
+                        <Route path="/movieInfo" element={<MovieInfo />} />
                     </Route>
                 </Routes>
             </Router>
