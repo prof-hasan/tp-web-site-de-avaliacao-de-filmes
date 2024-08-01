@@ -13,14 +13,9 @@ import {
     Link,
     Divider
 } from '@material-ui/core';
-
-import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-
-
 import logo from "../../assets/logo-lvm3.svg";
-import { systemVersion } from "../../../package.json";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,30 +27,23 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     textAlign: "center",
     padding: theme.spacing(2),
-    height: '50vh',
-    width: '60vh',
+    height: '65%',
+    width: '60%',
     borderRadius: theme.spacing(2),
-    //border: `1px solid ${theme.palette.borderPrimary}`,
-    // backgroundColor: `rgba(${theme.palette.background.paper})`,
-    //backgroundColor: theme.palette.textPrimary,
     boxShadow: "0px 5px 9px rgba(0, 0, 0, 0.5)",
     backgroundColor: `rgba(${parseInt(theme.palette.textPrimary.slice(1, 3), 16)}, ${parseInt(theme.palette.textPrimary.slice(3, 5), 16)}, ${parseInt(theme.palette.textPrimary.slice(5, 7), 16)},0.7)`,
-    //boxShadow: "0px 5px 9px rgba(0, 0, 0, 0.16)",
-
   },
   avatar: {
     margin: theme.spacing(1),
-    //backgroundColor: theme.palette.secondary.main,
   },
   whatsapp: {
     backgroundColor: '#32d951'
   },
   form: {
-    width: "75%", // Fix IE 11 issue.
+    width: "75%",
     marginTop: theme.spacing(1),
   },
   submit: {
-    //marginTop: theme.spacing(5),
     margin: theme.spacing(3, 0, 2),
   },
   containerWrapper: {
@@ -119,7 +107,7 @@ const Login = () => {
         <div className={classes.containerWrapper}>
           <Container component="div" maxWidth="xs" className={classes.mobileContainer}>
             <div className={classes.paper}>
-            <div style={{ width:'50%', height:'50%'}}>
+            <div style={{ width:'40%', height:'35%'}}>
             <img src={logo} style={{width:'80%'}} />
             </div>
                <Divider />
