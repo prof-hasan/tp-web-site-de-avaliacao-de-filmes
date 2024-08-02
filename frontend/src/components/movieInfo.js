@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { Rating } from '@material-ui/lab';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   movieCard: {
@@ -38,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Fenix',
     textAlign: 'center',
     fontWeight: 100,
+    marginBottom: '10px'
   },
   movieParagraph: {
     margin: '8px 0',
@@ -54,23 +62,68 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '8px',
     padding: '10px 20px',
     alignSelf: 'center',
-    marginTop: '8px',
+    marginTop: 'auto',
     fontWeight: '200px',
     '&:hover': {
       backgroundColor: '#ff7b52',
     },
-    root: {
+    flexDirection: 'column',
+    ratingContainer: {
         display: 'flex',
+        alignItems: 'center',
         flexDirection: 'column',
         '& > * + *': {
           marginTop: theme.spacing(1),
         },
+    },
+    dialog: {
+      '& .MuiDialogContent-root': {
+        padding: theme.spacing(2),
+        backgroundColor: `#ffffff !important`, // Fundo branco
+        color: '#000000', // Texto preto
+      },
+      '& .MuiDialogActions-root': {
+        padding: theme.spacing(1),
+        backgroundColor: theme.palette.primary.main, // Fundo branco
+        color: '#000000', // Texto preto
+      },
+    },
+    dialogTitle: {
+      fontFamily: 'Urbanist',
+      color: '#000000', // Título preto
+    },
+    dialogContent: {
+      display: 'flex',
+      flexDirection: 'column',
+      color: '#000000', // Texto preto
+    },
+    dialogTextField: {
+      marginTop: theme.spacing(2),
+      '& .MuiInputBase-root': {
+        color: '#000000', // Texto do campo de entrada preto
+      },
+      '& .MuiInputLabel-root': {
+        color: '#000000', // Rótulo do campo de entrada preto
+      },
+      '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#6a1b9a', // Cor da borda roxa
+      },
     },
   },
 }));
 
 const MovieCard = ({ title, duration, director, releaseDate, nominations, rating, imageUrl }) => {
   const classes = useStyles();
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   
   return (
     <div className={classes.movieCard}>
@@ -82,11 +135,41 @@ const MovieCard = ({ title, duration, director, releaseDate, nominations, rating
         <p className={classes.movieParagraph}><strong>Data de lançamento:</strong> {releaseDate}</p>
         <p className={classes.movieParagraph}><strong>Indicações:</strong> {nominations}</p>
         {/* <p className={classes.movieParagraph}><strong>Sua avaliação:</strong> {rating} <span className={classes.star}>⭐</span></p> */}
-        <div className={classes.root}>
-            <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+        <div className={classes.ratingContainer}>
+            <span className={classes.movieParagraph}><strong>Sua avaliação:  </strong></span>
+            <Rating name="half-rating" defaultValue={1.0} precision={0.5} />
             {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
         </div>
-        <Button className={classes.commentButton}>Adicionar Comentário</Button>
+        <Button className={classes.commentButton } onClick={handleClickOpen}>Adicionar Comentário</Button>
+        <Dialog open={open} onClose={handleClose} className={classes.dialog}>
+          <DialogTitle className={classes.dialogTitle}>Adicionar Comentário</DialogTitle>
+          <DialogContent className={classes.dialogContent}>
+            <DialogContentText>
+              Escreva seu comentário sobre o filme abaixo:
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="comment"
+              label="Comentário"
+              type="text"
+              fullWidth
+              multiline
+              rows={4}
+              variant="outlined"
+              className={classes.dialogTextField}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancelar
+            </Button>
+            <Button onClick={handleClose} color="primary">
+              Enviar
+            </Button>
+          </DialogActions>
+        </Dialog>
+
       </div>
     </div>
   );
