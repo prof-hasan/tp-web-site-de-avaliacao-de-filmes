@@ -13,6 +13,7 @@ import {
     Link,
     Divider
 } from '@material-ui/core';
+import Header from "../../components/header";
 import { makeStyles } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import logo from "../../assets/logo-lvm3.svg";
@@ -102,6 +103,7 @@ const Login = () => {
 
   return (
     <div className={classes.root}>
+      <Header />
       <Container component="main" maxWidth="md">
         <CssBaseline />
         <div className={classes.containerWrapper}>

@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Button, Avatar, IconButton, TextField, InputAdornment } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo-lvm3.svg';
+import logo from '../assets/logo-lvm2.svg';
 import SearchIcon from '@mui/icons-material/Search';
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from '@mui/icons-material/Close'; 
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: '100px',
     height: '100px',
-    marginRight: theme.spacing(2),
+    marginRight: 'auto',
+    display: 'flex',
   },
   appBar: {
     backgroundColor: 'transparent',
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     width: '100%',
     zIndex: theme.zIndex.drawer + 1,
+    marginTop: '20px',
   },
   toolbar: {
     minHeight: '64px',
@@ -39,12 +41,23 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
     color: 'inherit',
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(10),
+    transition: 'transform 0.2s ease-in-out',
+    maxWidth: '100%',
+    '&:hover': {
+      transform: 'scale(1.10)',
+    },
+  },
+  linkText: {
+    fontSize: '20px',
   },
   login: {
     marginLeft: 'auto',
     display: 'flex',
     alignItems: 'center',
+  },
+  loginText: {
+    color: 'white',
   },
   search: {
     marginRight: theme.spacing(2),
@@ -55,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     color: 'white',
-  },
+  }
 }));
 
 const Header = () => {
@@ -70,21 +83,21 @@ const Header = () => {
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <Link to="/" className={classes.link}>
+          <Link to="/">
             <img src={logo} alt="Logo" className={classes.logo} />
           </Link>
           <div className={classes.navLinks}>
             <Link to="/" className={classes.link}>
-              <Button color="inherit">Explorar</Button>
+              <Button color="inherit" className={classes.linkText}>Explorar</Button>
             </Link>
             <Link to="/movielisting" className={classes.link}>
-              <Button color="inherit">Meus filmes</Button>
+              <Button color="inherit" className={classes.linkText}>Meus filmes</Button>
             </Link>
             <Link to="/" className={classes.link}>
-              <Button color="inherit">Listas</Button>
+              <Button color="inherit" className={classes.linkText}>Listas</Button>
             </Link>
             <Link to="/" className={classes.link}>
-              <Button color="inherit">Amigos</Button>
+              <Button color="inherit" className={classes.linkText}>Amigos</Button>
             </Link>
           </div>
           <div className={classes.login}>
@@ -98,7 +111,7 @@ const Header = () => {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton onClick={() => setIsSearchOpen(false)}>
-                        <CloseIcon />
+                      <CloseIcon style={{ color: 'white' }} />
                       </IconButton>
                     </InputAdornment>
                   ),
@@ -109,8 +122,12 @@ const Header = () => {
             <IconButton className={classes.search} color="inherit" onClick={handleSearchClick}>
               <SearchIcon />
             </IconButton>
-            <Button color="inherit">Login</Button>
-            <Avatar src="/broken-image.jpg" />
+            <Link to="/login" className={classes.loginText}>
+              <Button color="inherit">Login</Button>
+            </Link>
+            <Link to="/profile">
+              <Avatar src="/broken-image.jpg" />
+            </Link>
           </div>
         </Toolbar>
       </AppBar>

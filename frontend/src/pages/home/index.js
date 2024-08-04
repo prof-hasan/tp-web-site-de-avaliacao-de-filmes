@@ -1,39 +1,60 @@
 // src/pages/Home.js
 
-import React, { useState } from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
-import {
-    Avatar,
-    Button,
-    CssBaseline,
-    TextField,
-    Grid,
-    Typography,
-    Container,
-    InputAdornment,
-    IconButton,
-    Link,
-    Divider
-} from '@material-ui/core';
+import React from "react";
+import { Container, CssBaseline, TextField, IconButton, InputAdornment, Typography } from '@material-ui/core';
 import Header from "../../components/header"; // Ajuste o caminho conforme necessário
-
-import Box from "@material-ui/core/Box";
+import SearchIcon from '@mui/icons-material/Search';
 import { makeStyles } from "@material-ui/core/styles";
-import { Visibility, VisibilityOff } from "@material-ui/icons";
-
-import logo from "../../assets/logo-lvm3.svg";
-import { systemVersion } from "../../../package.json";
+import catalogoImg from '../../assets/catalogo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    overflowX: 'hidden',
   },
-  container: {
-    marginTop: theme.spacing(8),
+  searchFieldBody: {
+    marginLeft: theme.spacing(10),
+    marginRight: theme.spacing(10),
+  },
+  searchField: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
+    borderRadius: theme.shape.borderRadius * 5,
+    boxShadow: theme.shadows[2],
+    border: 'none',
+    backgroundColor: 'rgba(70, 0, 192, 0.3)',
+    color: '#fff',
+    transition: 'transform 0.2s ease-in-out',
+    width: '100%',
+    maxWidth: '100%',
+    '&:hover': {
+      transform: 'scale(1.02)',
+    },
   },
+  textField: {
+    border: 'none',
+    width: '100%',
+    fontSize: '26px',
+  },
+  searchIcon: {
+    color: 'white',
+    opacity: 0.5,
+  },
+  input: {
+    color: 'white',
+  },
+  boxBody: {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: 'rgba(70, 0, 192, 0.3)',
+    borderRadius: theme.shape.borderRadius * 5,
+    boxShadow: theme.shadows[2],
+    marginTop: theme.spacing(10),
+    marginLeft: theme.spacing(10),
+    marginRight: theme.spacing(10),
+    padding: theme.spacing(2),
+  }
+
 }));
 
 const Home = () => {
@@ -43,10 +64,28 @@ const Home = () => {
     <div className={classes.root}>
       <Header />
       <Container component="main" maxWidth="md">
-        <CssBaseline />
-        <div className={classes.container}>
-          {/* Adicione aqui o conteúdo da página Home */}
-          <Typography variant="h4">Bem-vindo ao MyApp</Typography>
+        <div className={classes.searchFieldBody}>
+          <TextField
+            className={classes.searchField}
+            variant="outlined"
+            placeholder="Buscar filme, diretor, gênero..."
+            InputProps={{
+              classes: {
+                input: classes.input,
+                root: classes.textField,
+              },
+              startAdornment: (
+                <InputAdornment position="start" className={classes.searchIcon}>
+                  <SearchIcon/>
+                </InputAdornment>
+              ),
+            }}
+            autoFocus
+          />
+        </div>
+        <div className={classes.boxBody}>
+          <img src={catalogoImg} alt="Icon" className={classes.image} />
+          <Typography className={classes.text}> teste </Typography>
         </div>
       </Container>
     </div>
