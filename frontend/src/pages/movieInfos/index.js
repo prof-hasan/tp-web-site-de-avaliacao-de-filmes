@@ -1,7 +1,8 @@
 import React from 'react';
-import MovieCard from '../../components/movieInfo';
+import MovieInfo from '../../components/movieInfo';
 import poster from '../../assets/posterUmSonhoDeLiberdade.jpg'
 import Header from "../../components/header";
+import Comment from "../../components/comment";
 
 const App = () => {
   const movie = {
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <div className="app">
       <Header/>
-      <MovieCard 
+      <MovieInfo 
         title={movie.title}
         duration={movie.duration}
         director={movie.director}
@@ -26,6 +27,7 @@ const App = () => {
         rating={movie.rating}
         imageUrl={movie.imageUrl}
       />
+      <Comment/>
     </div>
   );
 };
