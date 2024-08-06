@@ -1,8 +1,8 @@
 // src/pages/Home.js
 
 import React from "react";
-import { Container, CssBaseline, TextField, IconButton, Button, InputAdornment, Typography } from '@material-ui/core';
-import Header from "../../components/header"; // Ajuste o caminho conforme necessário
+import { Container, TextField, Button, InputAdornment, Typography } from '@material-ui/core';
+import Header from "../../components/header";
 import SearchIcon from '@mui/icons-material/Search';
 import { makeStyles } from "@material-ui/core/styles";
 import catalogoImg from '../../assets/catalogo.png';

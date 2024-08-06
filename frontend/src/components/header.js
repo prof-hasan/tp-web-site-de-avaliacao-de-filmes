@@ -106,7 +106,7 @@ const Header = () => {
             <Link to="/" className={classes.link}>
               <Button color="inherit" className={classes.linkText}>Listas</Button>
             </Link>
-            <Link to="/" className={classes.link}>
+            <Link to="/friends" className={classes.link}>
               <Button color="inherit" className={classes.linkText}>Amigos</Button>
             </Link>
           </div>
