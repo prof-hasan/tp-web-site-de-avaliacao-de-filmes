@@ -1,11 +1,12 @@
 // src/pages/Home.js
 
 import React from "react";
-import { Container, CssBaseline, TextField, IconButton, InputAdornment, Typography } from '@material-ui/core';
+import { Container, CssBaseline, TextField, IconButton, Button, InputAdornment, Typography } from '@material-ui/core';
 import Header from "../../components/header"; // Ajuste o caminho conforme necessário
 import SearchIcon from '@mui/icons-material/Search';
 import { makeStyles } from "@material-ui/core/styles";
 import catalogoImg from '../../assets/catalogo.png';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,8 +14,6 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'hidden',
   },
   searchFieldBody: {
-    marginLeft: theme.spacing(10),
-    marginRight: theme.spacing(10),
   },
   searchField: {
     display: 'flex',
@@ -27,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     transition: 'transform 0.2s ease-in-out',
     width: '100%',
     maxWidth: '100%',
+    '& fieldset': {
+      border: 'none',
+    },
     '&:hover': {
       transform: 'scale(1.02)',
     },
@@ -49,12 +51,41 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(70, 0, 192, 0.3)',
     borderRadius: theme.shape.borderRadius * 5,
     boxShadow: theme.shadows[2],
-    marginTop: theme.spacing(10),
-    marginLeft: theme.spacing(10),
-    marginRight: theme.spacing(10),
+    marginTop: theme.spacing(7),
     padding: theme.spacing(2),
-  }
-
+  },
+  image: {
+    width: '100%',
+    height: 'auto',
+    maxWidth: '450px',
+    marginRight: theme.spacing(2),
+  },
+  boxTitle: {
+    color: 'white',
+    fontSize: '22px',
+    fontWeight: 'bold',
+    marginBottom: theme.spacing(3),
+  },
+  boxText: {
+    color: 'white',
+    fontSize: '18px',
+  },
+  button: {
+    color: 'white',
+    fontSize: '18px',
+    fontWeight: 'bold',
+    background: '#FCA600',
+    border: '3px solid #FCA600',
+    marginTop: theme.spacing(3),
+    borderRadius: theme.shape.borderRadius * 5,
+    textTransform: 'none',
+    transition: 'transform 0.2s ease-in-out',
+    '&:hover': {
+      background: 'white',
+      color: '#FCA600',
+      transform: 'scale(1.10)',
+    },
+  },
 }));
 
 const Home = () => {
@@ -76,7 +107,7 @@ const Home = () => {
               },
               startAdornment: (
                 <InputAdornment position="start" className={classes.searchIcon}>
-                  <SearchIcon/>
+                  <SearchIcon />
                 </InputAdornment>
               ),
             }}
@@ -85,7 +116,13 @@ const Home = () => {
         </div>
         <div className={classes.boxBody}>
           <img src={catalogoImg} alt="Icon" className={classes.image} />
-          <Typography className={classes.text}> teste </Typography>
+          <div className={classes.textDiv}>
+            <Typography className={classes.boxTitle}> Explorar catálogo de filmes </Typography>
+            <Typography className={classes.boxText}> Navegue por nosso vasto catálogo, onde cada filme é uma porta aberta para um novo mundo. Quer você seja um aficionado por dramas emocionantes, um entusiasta de comédias hilárias, um devoto de thrillers de tirar o fôlego, ou um explorador de documentários reveladores, temos algo especial para você.  </Typography>
+            <Link to="/" className={classes.link}>
+              <Button variant="contained" className={classes.button}> Catálogo de filmes </Button>
+            </Link>
+          </div>
         </div>
       </Container>
     </div>

@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
   loginText: {
     color: 'white',
+    marginRight: theme.spacing(2),
   },
   search: {
     marginRight: theme.spacing(2),
@@ -65,6 +66,15 @@ const useStyles = makeStyles((theme) => ({
   searchField: {
     marginRight: theme.spacing(2),
     width: '200px',
+    '&:hover': {
+      border: '1px solid white',
+      borderRadius: theme.shape.borderRadius * 2,
+    },
+    '& fieldset': {
+      border: '1px solid white',
+      borderRadius: theme.shape.borderRadius * 2,
+      opacity: 0.5,
+    },
   },
   input: {
     color: 'white',
