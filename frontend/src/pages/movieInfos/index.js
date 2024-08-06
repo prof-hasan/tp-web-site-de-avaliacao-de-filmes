@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieInfo from '../../components/movieInfo';
 import poster from '../../assets/posterUmSonhoDeLiberdade.jpg'
+import profile from '../../assets/deadpool.jpg'
 import Header from "../../components/header";
 import Comment from "../../components/comment";
 
@@ -13,6 +14,10 @@ const App = () => {
     nominations: 'Oscar de melhor ator, Oscar de melhor filme',
     rating: '4.5',
     imageUrl: poster, // Substitua pelo URL da imagem real
+    profilePic: profile,
+    user: '@DeadpoolSincero',
+    comment: 'Sensacional! Chorei mais que o brasileiro vendo a Rebeca Andrade ganhando o ouro.',
+    rating: 5
   };
 
   return (
@@ -27,7 +32,12 @@ const App = () => {
         rating={movie.rating}
         imageUrl={movie.imageUrl}
       />
-      <Comment/>
+      <Comment
+        profileImageUrl={movie.profilePic}
+        username={movie.user}
+        comment={movie.comment}
+        rating={movie.rating}
+      />
     </div>
   );
 };
