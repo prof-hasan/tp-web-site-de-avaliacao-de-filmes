@@ -24,28 +24,28 @@ const useStyles = makeStyles((theme) => ({
     margin: '20px 0',
   },
   sectionTitle: {
-    marginTop: '50px',
-    fontSize: '24px',
+    fontFamily: 'urbanist',
+    marginTop: '70px',
+    fontSize: '30px',
     fontWeight: 'bold',
     marginBottom: '10px',
   },
-  sliderContainer: {
+  listContainer: {
     display: 'flex',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
-  slider: {
+  genreContainer: {
     display: 'flex',
-    overflow: 'hidden',
-    width: 'calc(100% - 60px)', // Ajustando para deixar espaço para as setas
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  arrow: {
+  arrowButton: {
+    background: 'none',
+    border: 'none',
+    fontSize: '20px',
     cursor: 'pointer',
-    fontSize: '30px',
     color: '#fff',
-    userSelect: 'none',
-  },
-  hide: {
-    display: 'none',
   }
 }));
 
@@ -72,19 +72,28 @@ const App = () => {
   const [currentGenreIndex, setCurrentGenreIndex] = useState(0);
 
   const handlePreviousList = () => {
-    setCurrentListIndex((prev) => (prev === 0 ? list.length - 4 : prev - 1));
+    setCurrentListIndex((prev) => (prev + 4) % list.length);
   };
 
   const handleNextList = () => {
-    setCurrentListIndex((prev) => (prev === list.length - 4 ? 0 : prev + 1));
+    setCurrentListIndex((prev) => (prev - 4 + list.length) % list.length);
   };
 
   const handlePreviousGenre = () => {
-    setCurrentGenreIndex((prev) => (prev === 0 ? genres.length - 4 : prev - 1));
+    setCurrentGenreIndex((prev) => (prev + 4) % list.length);
   };
 
   const handleNextGenre = () => {
-    setCurrentGenreIndex((prev) => (prev === genres.length - 4 ? 0 : prev + 1));
+    setCurrentGenreIndex((prev) => (prev - 4 + list.length) % list.length);
+  };
+
+  const renderItems = (items, startIndex) => {
+    const endIndex = (startIndex + 4) % items.length;
+    if (startIndex < endIndex) {
+      return items.slice(startIndex, endIndex);
+    } else {
+      return [...items.slice(startIndex), ...items.slice(0, endIndex)];
+    }
   };
 
   return (
@@ -92,39 +101,36 @@ const App = () => {
       <Header />
       <div className={classes.section}>
         <div className={classes.sectionTitle}>Minhas listas</div>
-        <div className={classes.sliderContainer}>
-          <div className={classes.arrow} onClick={handlePreviousList}>‹</div>
-          <div className={classes.slider}>
-            {list.slice(currentListIndex, currentListIndex + 4).map((item, index) => (
-              <MovieBox
-                key={index}
-                movieListImage={item.image}
-                listTitle={item.name}
-                author={item.author}
-                moviesNumber={item.moviesNumber}
-              />
-            ))}
-          </div>
-          <div className={classes.arrow} onClick={handleNextList}>›</div>
+        <div className={classes.listContainer}>
+            <button className={classes.arrowButton} onClick={handlePreviousList}>{"<"}</button>
+            {renderItems(list, currentListIndex).map((item, index) => (
+            <MovieBox
+              key={index}
+              movieListImage={item.image}
+              listTitle={item.name}
+              author={item.author}
+              moviesNumber={item.moviesNumber}
+            />
+          ))}
+          <button className={classes.arrowButton} onClick={handleNextList}>{">"}</button>
         </div>
       </div>
       <div className={classes.section}>
         <div className={classes.sectionTitle}>Meus gêneros mais assistidos</div>
-        <div className={classes.sliderContainer}>
-          <div className={classes.arrow} onClick={handlePreviousGenre}>‹</div>
-          <div className={classes.slider}>
-            {genres.slice(currentGenreIndex, currentGenreIndex + 4).map((item, index) => (
-              <MovieBox
-                key={index}
-                movieListImage={item.image}
-                listTitle={item.name}
-                author={item.author}
-                moviesNumber={item.moviesNumber}
-              />
-            ))}
-          </div>
-          <div className={classes.arrow} onClick={handleNextGenre}>›</div>
+        <div className={classes.genreContainer}>
+            <button className={classes.arrowButton} onClick={handlePreviousGenre}>{"<"}</button>
+          {renderItems(genres, currentGenreIndex).map((item, index) => (
+            <MovieBox
+              key={index}
+              movieListImage={item.image}
+              listTitle={item.name}
+              author={item.author}
+              moviesNumber={item.moviesNumber}
+            />
+          ))}
+          <button className={classes.arrowButton} onClick={handleNextGenre}>{">"}</button>
         </div>
+        
       </div>
     </div>
   );

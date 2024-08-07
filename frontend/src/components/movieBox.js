@@ -3,29 +3,31 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  box: {
-    height: '286px',
-    width: '246px',
-    margin: '0 10px', // Adicionando margem para espaçamento
-    textAlign: 'center', // Centralizando o texto
-  },
-  listImage: {
-    height: '246px',
-    width: '246px',
-    borderRadius: '10px', // Adicionando bordas arredondadas
-    objectFit: 'cover', // Garantindo que a imagem cubra toda a área
-  },
-  subtitle: {
-    marginTop: '10px', // Adicionando margem superior
-  },
-  listTitle: {
-    fontSize: '18px',
-    fontWeight: 'bold', // Adicionando negrito ao título
-  },
-  info: {
-    fontSize: '14px',
-    color: '#ccc', // Adicionando cor mais clara para o texto informativo
-  }
+    box: {
+        height: '286px',
+        width: '246px',
+        margin: '0 10px',
+    },
+    listImage: {
+        height: '246px',
+        width: '246px',
+        borderRadius: '10px',
+        objectFit: 'cover',
+    },
+    subtitle: {
+        marginTop: '10px',
+        justifyContent: 'left',
+    },
+    listTitle: {
+        fontSize: '22px',
+        fontWeight: 'bold',
+        fontFamily: 'urbanist',
+    },
+    info: {
+        marginTop: '5px',
+        fontSize: '14px',
+        fontFamily: 'urbanist',
+    }
 }));
 
 const MovieBox = ({ movieListImage, listTitle, author, moviesNumber }) => {
@@ -33,7 +35,9 @@ const MovieBox = ({ movieListImage, listTitle, author, moviesNumber }) => {
 
   return (
     <div className={classes.box}>
-      <img src={movieListImage} className={classes.listImage} alt={`${listTitle} cover`} />
+      <div>
+        <img src={movieListImage} className={classes.listImage} />
+      </div>
       <div className={classes.subtitle}>
         <div className={classes.listTitle}>{listTitle}</div>
         <div className={classes.info}>{author} - {moviesNumber} filmes</div>
