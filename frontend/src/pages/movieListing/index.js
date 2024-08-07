@@ -1,6 +1,7 @@
 import React from 'react';
 import { CssBaseline, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import Header from "../../components/header"; // Ajuste o caminho conforme necessário
 import MovieCard from '../../components/movieCard';
 
@@ -75,7 +76,7 @@ const MovieListing = () => {
         <CssBaseline />
         <div className={classes.container}>
           {movies.map((movie) => (
-            <MovieCard key={movie.title} movie={movie} />
+            <MovieCard key={movie.title} movie={movie} component={Link} to="../movieInfo"/>
           ))}
         </div>
       </Container>
