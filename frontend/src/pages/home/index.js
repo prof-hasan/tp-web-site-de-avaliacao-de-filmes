@@ -119,7 +119,7 @@ const Home = () => {
           <div className={classes.textDiv}>
             <Typography className={classes.boxTitle}> Explorar catálogo de filmes </Typography>
             <Typography className={classes.boxText}> Navegue por nosso vasto catálogo, onde cada filme é uma porta aberta para um novo mundo. Quer você seja um aficionado por dramas emocionantes, um entusiasta de comédias hilárias, um devoto de thrillers de tirar o fôlego, ou um explorador de documentários reveladores, temos algo especial para você.  </Typography>
-            <Link to="/" className={classes.link}>
+            <Link to="/movielisting" className={classes.link}>
               <Button variant="contained" className={classes.button}> Catálogo de filmes </Button>
             </Link>
           </div>
