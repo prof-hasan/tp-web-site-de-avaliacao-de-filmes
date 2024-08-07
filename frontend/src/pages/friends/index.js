@@ -20,17 +20,17 @@ const useStyles = makeStyles((theme) => ({
 const friends = [
     {
         name: "Lucas Santos",
-        favMovie: "Deadpool & Wolverine",
+        favMovie: "Durmo contigo e serei mãe",
         favGenre: "Suspense"
     },
     {
         name: "Vinícius Pinheiro",
-        favMovie: "Um milhão de maneiras de pegar na pistola",
+        favMovie: "Dorme comigo e você será mãe",
         favGenre: "Comédia"
     },
     {
         name: "Marcela Caram",
-        favMovie: "Rebeca Andrade: the GOAT",
+        favMovie: "A tesourada mortal",
         favGenre: "Policial"
     },
     {

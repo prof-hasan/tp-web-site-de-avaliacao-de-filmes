@@ -18,7 +18,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import logo from "../../assets/logo-lvm3.svg";
 
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -28,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     textAlign: "center",
     padding: theme.spacing(2),
-    height: '65%',
-    width: '60%',
+    height: 'auto', // Altere aqui
+    width: '80%',
     borderRadius: theme.spacing(2),
     boxShadow: "0px 5px 9px rgba(0, 0, 0, 0.5)",
     backgroundColor: `rgba(${parseInt(theme.palette.textPrimary.slice(1, 3), 16)}, ${parseInt(theme.palette.textPrimary.slice(3, 5), 16)}, ${parseInt(theme.palette.textPrimary.slice(5, 7), 16)},0.7)`,
@@ -81,14 +80,14 @@ const Login = () => {
   const classes = useStyles();
   const [user, setUser] = useState({ username: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const navigation= useNavigate();
+  const navigation = useNavigate();
 
   const handleChangeInput = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = e => {
-    //e.preventDefault();
+    e.preventDefault();
     //getLogin();
     //redirectHome();
   };
@@ -100,21 +99,18 @@ const Login = () => {
     //navigation("/Home")
   }
   
-
   return (
     <div className={classes.root}>
-      <Header />
       <Container component="main" maxWidth="md">
         <CssBaseline />
         <div className={classes.containerWrapper}>
           <Container component="div" maxWidth="xs" className={classes.mobileContainer}>
             <div className={classes.paper}>
-            <div style={{ width:'40%', height:'35%'}}>
-            <img src={logo} style={{width:'80%'}} />
-            </div>
-               <Divider />
+              <div style={{ width: '50%', height: '40%' }}>
+                <img src={logo} style={{ width: '80%' }} />
+              </div>
+              <Divider />
               <form className={classes.form} noValidate onSubmit={handleSubmit}>
-              
                 <TextField
                   variant="outlined"
                   margin="normal"
@@ -158,8 +154,8 @@ const Login = () => {
                   type="submit"
                   size="large"
                   variant="contained"
-                  color= "primary"
-                  classaNme={classes.submit}
+                  color="primary"
+                  className={classes.submit}
                 >
                   Entrar
                 </Button>
