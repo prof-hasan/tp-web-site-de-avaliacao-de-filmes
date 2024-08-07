@@ -103,7 +103,7 @@ const Header = () => {
             <Link to="/movielisting" className={classes.link}>
               <Button color="inherit" className={classes.linkText}>Meus filmes</Button>
             </Link>
-            <Link to="/" className={classes.link}>
+            <Link to="/playlists" className={classes.link}>
               <Button color="inherit" className={classes.linkText}>Listas</Button>
             </Link>
             <Link to="/friends" className={classes.link}>

@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     transition: 'transform 0.2s ease-in-out',
     width: '100%',
     maxWidth: '100%',
+    textDecoration: 'none',
     '&:hover': {
       transform: 'scale(1.02)',
     },
@@ -57,11 +58,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, component: Component = 'div', ...props }) => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.card}>
+    <Box className={classes.card} component={Component} {...props}>
       <Avatar className={classes.poster} src={`path_to_images/${movie.title.replace(/\s/g, '_')}.jpg`} />
       <Box className={classes.details}>
         <Box className={classes.titleGenre}>
