@@ -60,14 +60,19 @@ const useStyles = makeStyles((theme) => ({
   },
   friendName: {
     color: 'white',
-    fontSize: '22px',
+    fontSize: '26px',
     fontWeight: 'bold',
     marginBottom: theme.spacing(3),
   },
   friendText: {
     color: 'white',
-    fontSize: '18px',
+    fontSize: '20px',
     marginBottom: theme.spacing(1),
+  },
+  playlistText: {
+    color: 'white',
+    fontSize: '24px',
+    marginBottom: theme.spacing(3),
   },
   button: {
     color: 'white',
@@ -104,6 +109,12 @@ const FriendProfile = () => {
             <Typography className={classes.friendText}> 38 filmes avaliados </Typography>
             <Typography className={classes.friendText}> Gênero favorito: Comédia, Suspense </Typography>
             <Typography className={classes.friendText}> Filme favorito: O Poderoso Chefão </Typography>
+          </div>
+        </div>
+        <div className={classes.boxBody}>
+          <Typography className={classes.playlistText}> Playlists: </Typography>
+          <div className={classes.textDiv}>
+            
           </div>
         </div>
       </Container>
