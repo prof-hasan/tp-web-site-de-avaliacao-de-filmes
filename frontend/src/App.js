@@ -7,6 +7,7 @@ import Home from './pages/home';
 import MovieListing from './pages/movieListing';
 import MovieInfo from './pages/movieInfos';
 import Friends from './pages/friends';
+import FriendProfile from './pages/friendProfile';
 
 function App() {
     const theme = createTheme({
@@ -39,6 +40,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/movieInfo" element={<MovieInfo />} />
                         <Route path="/friends" element={<Friends />} />
+                        <Route path="/friendProfile" element={<FriendProfile />} />
                     </Route>
                 </Routes>
             </Router>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { CssBaseline, Container } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from "../../components/header";
 import FriendCard from '../../components/friendCard';
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const friends = [
     {
         name: "Lucas Santos",
-        favMovie: "Durmo contigo e serei mãe",
+        favMovie: "Deadpool & Wolverine",
         favGenre: "Suspense"
     },
     {
@@ -30,7 +31,7 @@ const friends = [
     },
     {
         name: "Marcela Caram",
-        favMovie: "A tesourada mortal",
+        favMovie: "A tesoura mortal",
         favGenre: "Policial"
     },
     {
@@ -55,7 +56,7 @@ const Friends = () => {
         <CssBaseline />
         <div className={classes.container}>
           {friends.map((friend) => (
-            <FriendCard key={friend.title} friend={friend} />
+            <FriendCard key={friend.title} friend={friend} component={Link} to="../friendProfile" />
           ))}
         </div>
       </Container>

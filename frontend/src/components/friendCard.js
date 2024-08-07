@@ -1,9 +1,7 @@
 import React from 'react';
-import { Avatar, Box, Typography, Button } from '@material-ui/core';
+import { Avatar, Box, Typography, Link as MuiLink } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import StarIcon from '@material-ui/icons/Star';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -21,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       transform: 'scale(1.02)',
     },
+    textDecoration: 'none', // Remove underline on hover
   },
   avatar: {
     width: theme.spacing(9),
@@ -48,23 +47,19 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '20px',
     fontWeight: 'bold',
   },
-  fav: {
-
-  },
-  favMovie:{
-
-  },
+  fav: {},
+  favMovie: {},
   favGenre: {
     marginTop: theme.spacing(2),
   },
 }));
 
-const FriendCard = ({ friend }) => {
+const FriendCard = ({ friend, component: Component = 'div', ...props }) => {
   const classes = useStyles();
   const avatarImage = `../../public/usersAvatar/${friend.name.replace(/\s/g, '_')}.jpg`;
 
   return (
-    <Box className={classes.card}>
+    <Box className={classes.card} component={Component} {...props}>
       <Avatar className={classes.avatar} src={avatarImage} />
       <Box className={classes.details}>
         <Box className={classes.nameCard}>
