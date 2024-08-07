@@ -1,8 +1,6 @@
-// CommentCard.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-
 import { Box } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -23,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     marginRight: '20px',
+    width: '150px', // Definindo uma largura fixa
   },
   userIcon: {
     width: '50px',
@@ -33,9 +32,10 @@ const useStyles = makeStyles((theme) => ({
   username: {
     marginTop: '10px',
     fontWeight: 'bold',
+    textAlign: 'center', // Centralizando o nome de usuário
+    wordBreak: 'break-word', // Quebrando palavras longas
   },
   commentContent: {
-    marginLeft: '20px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -77,6 +77,7 @@ CommentCard.propTypes = {
   username: PropTypes.string.isRequired,
   comment: PropTypes.string.isRequired,
   profileImageUrl: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
 };
 
 export default CommentCard;
