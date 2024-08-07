@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     padding: '20px',
     margin: '20px',
+    marginTop: '50px'
   },
   moviePoster: {
     width: 'auto',
