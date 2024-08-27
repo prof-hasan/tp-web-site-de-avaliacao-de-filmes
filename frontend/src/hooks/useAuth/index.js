@@ -4,7 +4,6 @@ const useAuth = () => {
 
 
   const handleLogin = async (userData) => {
-    // setLoading(true);
     try {
       const { data } = await api.post("/auth", userData);
       return data;

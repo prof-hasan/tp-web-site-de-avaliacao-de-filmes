@@ -95,7 +95,7 @@ const Login = () => {
 
   const getLogin = async () => {
     const data = await handleLogin(user);
-    if(data){
+    if(data.loggedUser != null){
         redirectHome();
     }else{
       console.log('Erro ao logar');
@@ -103,7 +103,7 @@ const Login = () => {
   };
 
   const redirectHome = () => {
-    navigation("/Home")
+    navigation("/")
   }
   
   return (
