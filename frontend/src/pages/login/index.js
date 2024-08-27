@@ -17,6 +17,7 @@ import Header from "../../components/header";
 import { makeStyles } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import logo from "../../assets/logo-lvm3.svg";
+import useAuth from "../../hooks/useAuth";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -80,6 +81,7 @@ const Login = () => {
   const classes = useStyles();
   const [user, setUser] = useState({ username: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const { handleLogin } = useAuth();
   const navigation = useNavigate();
 
   const handleChangeInput = e => {
@@ -88,15 +90,20 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    //getLogin();
-    //redirectHome();
+    getLogin();
   };
 
   const getLogin = async () => {
+    const data = await handleLogin(user);
+    if(data){
+        redirectHome();
+    }else{
+      console.log('Erro ao logar');
+    }
   };
 
   const redirectHome = () => {
-    //navigation("/Home")
+    navigation("/Home")
   }
   
   return (
