@@ -1,27 +1,38 @@
 import {
-    Table,
-    Column,
-    Model,
-    PrimaryKey,
-    AutoIncrement,
+  Table,
+  Column,
+  Model,
+  PrimaryKey,
+  AutoIncrement,
+  HasMany,
+} from "sequelize-typescript";
+import MoviesList from "./MoviesList";
 
-  } from "sequelize-typescript";
+@Table
+class User extends Model<User> {
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+  id: number;
 
-  
-  @Table
-  class User extends Model<User> {
-    @PrimaryKey
-    @AutoIncrement
-    @Column
-    id: number;
-  
-    @Column
-    username: string;
-  
-    @Column
-    password: string;
-  
-  }
-  
-  export default User;
-  
+  @Column
+  name: string;
+
+  @Column
+  username: string;
+
+  @Column
+  password: string;
+
+  @Column
+  favoriteMovie: string;
+
+  @Column
+  favoriteGenre: string;
+
+  @Column
+  evaluatedFilmes: string;
+
+}
+
+export default User;
