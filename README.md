@@ -41,6 +41,12 @@ LMV é uma plataforma online dedicada a entusiastas do cinema, oferecendo uma ex
 - Gerenciamento de Erros: Utilize tratamento de erros apropriado e consistente. Registre e reporte erros de forma útil e compreensível para os usuários e desenvolvedores. Faça uso de exceções em situações excepcionais, não para controle de fluxo normal.
 - Versionamento de Código: Utilize um sistema de controle de versão como Git. Faça commits frequentes e significativos. Utilize branches para o desenvolvimento de novas funcionalidades e correções de bugs.
 
+### Boas Práticas de Programação para o React:
+- Componentes Pequenos e Reutilizáveis: Quebrar a interface em pequenos componentes reutilizáveis. Cada componente deve ter uma única responsabilidade. Isso facilita a manutenção e o reuso de código em diferentes partes da aplicação.
+- Estado Local vs. Estado Global: Use o estado local (useState) para dados que pertencem a um único componente, e use o estado global (com useReducer ou bibliotecas como Redux) para dados compartilhados entre vários componentes. Isso mantém o estado organizado e evita que componentes fiquem sobrecarregados com dados que não são diretamente relevantes para eles.
+- Hooks Personalizados: Extraia lógica reutilizável em hooks personalizados para evitar duplicação de código. Por exemplo, se várias partes do seu aplicativo precisam buscar dados de uma API, crie um hook como useFetch. Isso melhora a legibilidade e reuso, além de isolar a lógica de negócios de componentes.
+
+
 ### Clean Code:
 - Princípio KISS (Keep It Simple, Stupid): Mantenha o código simples e direto, evitando complexidade desnecessária.
 - Princípio DRY (Don't Repeat Yourself): Evite duplicação de código, encapsulando lógicas repetitivas em funções ou classes reutilizáveis.

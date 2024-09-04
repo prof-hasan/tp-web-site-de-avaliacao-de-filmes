@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MovieInfo from '../../components/movieInfo';
-import poster from '../../assets/posterUmSonhoDeLiberdade.jpg';
+import poster from '../../assets/umSonhoDeLiberdade.jpg';
 import profile from '../../assets/deadpool.jpg';
 import profile2 from '../../assets/adamSandler.jpg';
 import profile3 from '../../assets/divertidamente.jpg';
