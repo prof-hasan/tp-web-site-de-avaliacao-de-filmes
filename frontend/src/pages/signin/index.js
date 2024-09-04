@@ -1,17 +1,16 @@
 import React, { useState, useContext } from "react";
 import { Link as RouterLink, useNavigate, redirect } from "react-router-dom";
 import {
-    Avatar,
-    Button,
-    CssBaseline,
-    TextField,
-    Grid,
-    Typography,
-    Container,
-    InputAdornment,
-    IconButton,
-    Link,
-    Divider
+  Button,
+  CssBaseline,
+  TextField,
+  Typography,
+  Container,
+  InputAdornment,
+  IconButton,
+  Link,
+  Divider,
+  Snackbar
 } from '@material-ui/core';
 import Header from "../../components/header";
 import { makeStyles } from "@material-ui/core/styles";
@@ -79,26 +78,30 @@ const useStyles = makeStyles((theme) => ({
 
 const Signin = () => {
   const classes = useStyles();
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({ username: "", password: "", confirmPassword: "", name: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const navigation = useNavigate();
+  const [openSnackbar, setOpenSnackbar] = useState(false);  // Estado para controlar o Snackbar
+  const navigate = useNavigate();
 
-  const handleChangeInput = e => {
+  const handleChangeInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    //getLogin();
-    //redirectHome();
+    // Lógica para criar a conta
+    handleCreateAccount();
   };
 
-  const getLogin = async () => {
+  const handleCreateAccount = () => {
+    // Suponha que a conta foi criada com sucesso
+    setOpenSnackbar(true); // Mostrar Snackbar
   };
 
-  const redirectHome = () => {
-    //navigation("/Home")
-  }
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
+    navigate("/login"); // Redirecionar para login após fechar o Snackbar
+  };
   
   return (
     <div className={classes.root}>
@@ -202,6 +205,14 @@ const Signin = () => {
                     Criar conta
                 </Button>
                 </form>
+
+                {/* <Snackbar
+                  open={openSnackbar}
+                  autoHideDuration={3000}
+                  onClose={handleSnackbarClose}
+                  message="Conta criada com sucesso!"
+                  anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+              /> */}
 
             </div>
           </Container>       

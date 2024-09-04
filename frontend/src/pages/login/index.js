@@ -1,19 +1,16 @@
-import React, { useState, useContext } from "react";
-import { Link as RouterLink, useNavigate, redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
-    Avatar,
     Button,
     CssBaseline,
     TextField,
-    Grid,
     Typography,
     Container,
     InputAdornment,
     IconButton,
-    Link,
-    Divider
+    Divider,
+    Link
 } from '@material-ui/core';
-import Header from "../../components/header";
 import { makeStyles } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import logo from "../../assets/logo-lvm3.svg";
@@ -28,17 +25,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     textAlign: "center",
     padding: theme.spacing(2),
-    height: 'auto', // Altere aqui
+    height: 'auto',
     width: '80%',
     borderRadius: theme.spacing(2),
     boxShadow: "0px 5px 9px rgba(0, 0, 0, 0.5)",
     backgroundColor: `rgba(${parseInt(theme.palette.textPrimary.slice(1, 3), 16)}, ${parseInt(theme.palette.textPrimary.slice(3, 5), 16)}, ${parseInt(theme.palette.textPrimary.slice(5, 7), 16)},0.7)`,
-  },
-  avatar: {
-    margin: theme.spacing(1),
-  },
-  whatsapp: {
-    backgroundColor: '#32d951'
   },
   form: {
     width: "75%",
@@ -52,11 +43,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     gap: theme.spacing(4),
   },
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '150vh',
-  },
   mobileContainer: {
     flex: 1,
     display: 'flex', 
@@ -65,16 +51,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center', 
     minHeight: '100vh'
   },
-  hideOnMobile: {
-    display: 'flex', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    minHeight: '100vh',
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
-    },
-  },
-
 }));
 
 const Login = () => {
@@ -114,7 +90,7 @@ const Login = () => {
           <Container component="div" maxWidth="xs" className={classes.mobileContainer}>
             <div className={classes.paper}>
               <div style={{ width: '50%', height: '40%' }}>
-                <img src={logo} style={{ width: '80%' }} />
+                <img src={logo} style={{ width: '80%' }} alt="logo" />
               </div>
               <Divider />
               <form className={classes.form} noValidate onSubmit={handleSubmit}>
@@ -166,6 +142,12 @@ const Login = () => {
                 >
                   Entrar
                 </Button>
+                <Typography variant="body2">
+                  Ainda não tem uma conta?{" "}
+                  <Link component={RouterLink} to="/signin">
+                    Clique aqui!
+                  </Link>
+                </Typography>
               </form>
             </div>
           </Container>       
@@ -175,4 +157,4 @@ const Login = () => {
   ); 
 };
 
-export default Login; 
+export default Login;
