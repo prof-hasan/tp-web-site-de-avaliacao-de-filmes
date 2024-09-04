@@ -17,6 +17,7 @@ import Header from "../../components/header";
 import { makeStyles } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import logo from "../../assets/logo-lvm3.svg";
+import useSignIn from "../../hooks/useSignIn";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -79,8 +80,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Signin = () => {
   const classes = useStyles();
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({ name: "", username: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const { createUser } = useSignIn();
   const navigation = useNavigate();
 
   const handleChangeInput = e => {
@@ -89,15 +91,30 @@ const Signin = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    //getLogin();
-    //redirectHome();
+    create();
   };
 
-  const getLogin = async () => {
+  const create = async () => {
+    try {
+      const newUser = {
+        ...user,
+        favoriteGenre: "",
+        favoriteMovie: "",
+        evaluatedFilms: 0
+      };
+  
+      const data = await createUser(newUser);
+      if(data){
+        alert("Usuário criado com sucesso!");
+        redirectHome();
+      }
+    }catch(err){
+        console.error(err)
+    }
   };
 
   const redirectHome = () => {
-    //navigation("/Home")
+    navigation("/")
   }
   
   return (
