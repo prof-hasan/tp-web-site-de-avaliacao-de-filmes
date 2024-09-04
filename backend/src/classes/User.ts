@@ -6,7 +6,6 @@ import {
   AutoIncrement,
   HasMany,
 } from "sequelize-typescript";
-import MoviesList from "./MoviesList";
 
 @Table
 class User extends Model<User> {
@@ -31,7 +30,7 @@ class User extends Model<User> {
   favoriteGenre: string;
 
   @Column
-  evaluatedFilmes: string;
+  evaluatedFilms: number;
 
 }
 

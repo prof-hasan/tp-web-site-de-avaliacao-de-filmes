@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
-import User from "../classes/User";
+import UserClients from "../classes/UserClients";
 import MoviesList from "../classes/MoviesList";
 
 
@@ -10,7 +10,7 @@ const dbConfig = require("../config/database");
 const sequelize = new Sequelize(dbConfig);
 
 const models = [
-    User,
+    UserClients,
     MoviesList,
 ];
 

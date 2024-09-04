@@ -2,7 +2,7 @@ import { QueryInterface, DataTypes } from "sequelize";
 
 module.exports = {
   up: async (queryInterface: QueryInterface) => {
-    await queryInterface.createTable("User", {
+    await queryInterface.createTable("UserClients", {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -30,7 +30,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      evaluatedFilmes: {
+      evaluatedFilms: {
         type: DataTypes.STRING,
         allowNull: true,
       },
@@ -38,6 +38,6 @@ module.exports = {
   },
 
   down: async (queryInterface: QueryInterface) => {
-    await queryInterface.dropTable("User");
+    await queryInterface.dropTable("UserClients");
   }
 };

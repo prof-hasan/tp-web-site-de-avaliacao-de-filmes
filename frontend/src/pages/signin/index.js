@@ -16,6 +16,7 @@ import Header from "../../components/header";
 import { makeStyles } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import logo from "../../assets/logo-lvm3.svg";
+import useSignIn from "../../hooks/useSignIn";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -78,10 +79,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Signin = () => {
   const classes = useStyles();
-  const [user, setUser] = useState({ username: "", password: "", confirmPassword: "", name: "" });
+  const [user, setUser] = useState({ name: "", username: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const [openSnackbar, setOpenSnackbar] = useState(false);  // Estado para controlar o Snackbar
-  const navigate = useNavigate();
+  const { createUser } = useSignIn();
+  const navigation = useNavigate();
 
   const handleChangeInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -89,19 +90,31 @@ const Signin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para criar a conta
-    handleCreateAccount();
+    create();
   };
 
-  const handleCreateAccount = () => {
-    // Suponha que a conta foi criada com sucesso
-    setOpenSnackbar(true); // Mostrar Snackbar
+  const create = async () => {
+    try {
+      const newUser = {
+        ...user,
+        favoriteGenre: "",
+        favoriteMovie: "",
+        evaluatedFilms: 0
+      };
+  
+      const data = await createUser(newUser);
+      if(data){
+        alert("Usuário criado com sucesso!");
+        redirectHome();
+      }
+    }catch(err){
+        console.error(err)
+    }
   };
 
-  const handleSnackbarClose = () => {
-    setOpenSnackbar(false);
-    navigate("/login"); // Redirecionar para login após fechar o Snackbar
-  };
+  const redirectHome = () => {
+    navigation("/")
+  }
   
   return (
     <div className={classes.root}>

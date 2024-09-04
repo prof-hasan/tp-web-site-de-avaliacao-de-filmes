@@ -7,7 +7,6 @@ import {
     ForeignKey,
     BelongsTo,
   } from "sequelize-typescript";
-  import User from "./User";
   
   @Table
   class MoviesList extends Model<MoviesList> {
