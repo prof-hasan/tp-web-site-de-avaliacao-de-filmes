@@ -17,13 +17,15 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     padding: '20px',
     margin: '20px',
-    marginTop: '50px'
+    marginTop: '50px',
+    alignItems: 'center',
   },
   moviePoster: {
-    width: 'auto',
-    height: 'auto',
+    width: '250px', // Tamanho fixo
+    height: '380px', // Tamanho fixo
     borderRadius: '8px',
     marginRight: '20px',
+    objectFit: 'cover', // Ajusta a imagem para não distorcer
   },
   movieInfo: {
     flex: 1,
@@ -121,7 +123,7 @@ const MovieCard = ({ title, duration, director, releaseDate, nominations, rating
   
   return (
     <div className={classes.movieCard}>
-      <img src={require(`../assets/capasDosFilmes/${imageUrl}`)} className={classes.moviePoster} />
+      <img src={require(`../assets/capasDosFilmes/${imageUrl}`)} className={classes.moviePoster} alt={title} />
       <div className={classes.movieInfo}>
         <p className={classes.movieTitle}>{title}</p>
         <p className={classes.movieParagraph}><strong>Tempo de duração:</strong> {duration}</p>
@@ -130,7 +132,7 @@ const MovieCard = ({ title, duration, director, releaseDate, nominations, rating
         <p className={classes.movieParagraph}><strong>Indicações:</strong> {nominations}</p>
         <div className={classes.ratingContainer}>
           <span className={classes.movieRating}><strong>Sua avaliação:</strong></span>
-          <Rating name="half-rating" defaultValue={1.0} precision={0.5} />
+          <Rating name="half-rating" defaultValue={rating} precision={0.5} />
         </div>
         <Button className={classes.commentButton} onClick={openDialog}>Adicionar Comentário</Button>
         <Dialog open={open} onClose={closeDialog} PaperProps={{ className: classes.dialogPaper }}>
@@ -156,7 +158,7 @@ MovieCard.propTypes = {
   director: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
   nominations: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired, // Corrigi o tipo para número
   imageUrl: PropTypes.string.isRequired,
 };
 
