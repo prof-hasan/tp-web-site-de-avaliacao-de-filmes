@@ -1,6 +1,7 @@
 // src/pages/Home.js
 
 import React from "react";
+import { useState, useEffect } from "react";
 import { Container, TextField, Button, InputAdornment, Typography } from '@material-ui/core';
 import Header from "../../components/header";
 import SearchIcon from '@mui/icons-material/Search';
@@ -90,6 +91,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
+
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (user) {
+      setLoggedInUser(user);
+    }
+  }, []);
 
   return (
     <div className={classes.root}>

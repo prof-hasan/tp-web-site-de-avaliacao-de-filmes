@@ -72,6 +72,7 @@ const Login = () => {
   const getLogin = async () => {
     const data = await handleLogin(user);
     if(data.loggedUser != null){
+        localStorage.setItem('loggedInUser', JSON.stringify(user))
         redirectHome();
     }else{
       console.log('Erro ao logar');

@@ -105,15 +105,15 @@ const Signin = () => {
       const data = await createUser(newUser);
       if(data){
         alert("Usuário criado com sucesso!");
-        redirectHome();
+        redirectLogin();
       }
     }catch(err){
         console.error(err)
     }
   };
 
-  const redirectHome = () => {
-    navigation("/")
+  const redirectLogin = () => {
+    navigation("/login")
   }
   
   return (
@@ -218,15 +218,6 @@ const Signin = () => {
                     Criar conta
                 </Button>
                 </form>
-
-                {/* <Snackbar
-                  open={openSnackbar}
-                  autoHideDuration={3000}
-                  onClose={handleSnackbarClose}
-                  message="Conta criada com sucesso!"
-                  anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-              /> */}
-
             </div>
           </Container>       
         </div>
