@@ -71,18 +71,19 @@ const Login = () => {
 
   const getLogin = async () => {
     const data = await handleLogin(user);
-    if(data.loggedUser != null){
-        localStorage.setItem('loggedInUser', JSON.stringify(user))
-        redirectHome();
-    }else{
+    if (data && data.loggedUser) {
+      // Supondo que data.loggedUser é um objeto com todos os dados do usuário
+      localStorage.setItem('loggedInUser', JSON.stringify(data.loggedUser));
+      redirectHome();
+    } else {
       console.log('Erro ao logar');
     }
   };
 
   const redirectHome = () => {
-    navigation("/")
-  }
-  
+    navigation("/");
+  };
+
   return (
     <div className={classes.root}>
       <Container component="main" maxWidth="md">

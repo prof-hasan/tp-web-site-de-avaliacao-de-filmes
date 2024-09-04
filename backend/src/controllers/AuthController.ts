@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import VerifyUserService from "../services/AuthServices/VerifyUserService";
 import CreateUserService from "../services/CreateUserServices/CreateUserService";
+import GetUsers from "../services/AuthServices/GetUsers";
 
 type UserData = {
     name : string;
@@ -26,4 +27,8 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
   return res.json({ userCreated });
 };
 
+export const getUsers = async (req: Request, res: Response): Promise<Response> => {
+  const  data  = await GetUsers();
+  return res.json({ data });
+};
 

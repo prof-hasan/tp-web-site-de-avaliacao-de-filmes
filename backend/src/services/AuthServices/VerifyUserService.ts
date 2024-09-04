@@ -7,7 +7,7 @@ const VerifyUserService = async (username : string, password: string): Promise<U
       username,
       password
     },
-    attributes: ["id", "username", "password"] ,
+    attributes: ["id", "username", "password","name", "favoriteMovie","favoriteGenre","evaluatedFilms"] ,
   });
 
   return user;

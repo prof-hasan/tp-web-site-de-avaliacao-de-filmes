@@ -10,6 +10,7 @@ import Friends from './pages/friends';
 import FriendProfile from './pages/friendProfile';
 import Playlist from './pages/playlists';
 import Signin from './pages/signin';
+import Profile from './pages/profile';
 
 function App() {
     const theme = createTheme({
@@ -45,6 +46,7 @@ function App() {
                         <Route path="/friendProfile" element={<FriendProfile />} />
                         <Route path="/playlists" element={<Playlist />} />
                         <Route path="/signin" element={<Signin />} />
+                        <Route path="/profile" element={<Profile />} />
                     </Route>
                 </Routes>
             </Router>

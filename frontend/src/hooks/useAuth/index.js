@@ -12,9 +12,18 @@ const useAuth = () => {
     }
   };
 
+  const getUsers = async (userData) => {
+    try {
+      const { data } = await api.get("/getUsers", userData);
+      return data.data;
+    }catch(err){
+        console.error(err)
+    }
+  };
+
   return {
     handleLogin,
-
+    getUsers
   };
 
 

@@ -121,7 +121,7 @@ const MovieCard = ({ title, duration, director, releaseDate, nominations, rating
   
   return (
     <div className={classes.movieCard}>
-      <img src={imageUrl} alt={`${title} poster`} className={classes.moviePoster} />
+      <img src={require(`../assets/capasDosFilmes/${imageUrl}`)} className={classes.moviePoster} />
       <div className={classes.movieInfo}>
         <p className={classes.movieTitle}>{title}</p>
         <p className={classes.movieParagraph}><strong>Tempo de duração:</strong> {duration}</p>
