@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Header from "../../components/header";
 import MovieCard from '../../components/movieCard';
 import useMovies from "../../hooks/useMovies";
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,6 +72,7 @@ const MovieListing = () => {
   const classes = useStyles();
   const { getMovies } = useMovies();
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getData();
@@ -82,6 +84,10 @@ const MovieListing = () => {
     setMovies(data);
   };
 
+  const handleCardClick = (movie) => {
+    navigate(`../movieInfo`, { state: { movie } });
+  };
+
   return (
     <div className={classes.root}>
       <Header />
@@ -89,7 +95,7 @@ const MovieListing = () => {
         <CssBaseline />
         <div className={classes.container}>
           {movies.map((movie) => (
-            <MovieCard key={movie.title} movie={movie} component={Link} to="../movieInfo"/>
+            <MovieCard key={movie.id} movie={movie} onClick={handleCardClick}/>
           ))}
         </div>
       </Container>

@@ -8,6 +8,7 @@ import Header from "../../components/header";
 import Comment from "../../components/comment";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -35,14 +36,10 @@ const App = () => {
   const classes = useStyles();
   const [showSecondComment, setShowSecondComment] = useState(false);
 
-  const movie = {
-    title: 'Um sonho de liberdade',
-    duration: '2h22min',
-    director: 'Frank Darabont',
-    releaseDate: '17 de março de 1995',
-    nominations: 'Oscar de melhor ator, Oscar de melhor filme',
-    rating: '4.5',
-    imageUrl: poster, // Substitua pelo URL da imagem real
+  const location = useLocation();
+  const { movie } = location.state;  // Acesse o filme do estado
+
+  const comments = {
     profilePic: profile,
     user: '@DeadpoolSincero',
     comment: 'Sensacional! Chorei mais que o brasileiro vendo a Rebeca Andrade ganhando o ouro.',
@@ -71,28 +68,28 @@ const App = () => {
         releaseDate={movie.releaseDate}
         nominations={movie.nominations}
         rating={movie.rating}
-        imageUrl={movie.imageUrl}
+        imageUrl={movie.image}
       />
       <Comment
-        profileImageUrl={movie.profilePic}
-        username={movie.user}
-        comment={movie.comment}
-        rating={movie.rating}
+        profileImageUrl={comments.profilePic}
+        username={comments.user}
+        comment={comments.comment}
+        rating={comments.rating}
       />
       {showSecondComment && (
         <Comment
-          profileImageUrl={movie.profilePic2}
-          username={movie.user2}
-          comment={movie.comment2}
-          rating={movie.rating2}
+          profileImageUrl={comments.profilePic2}
+          username={comments.user2}
+          comment={comments.comment2}
+          rating={comments.rating2}
         />
       )}
       {showSecondComment && (
         <Comment
-          profileImageUrl={movie.profilePic3}
-          username={movie.user3}
-          comment={movie.comment3}
-          rating={movie.rating3}
+          profileImageUrl={comments.profilePic3}
+          username={comments.user3}
+          comment={comments.comment3}
+          rating={comments.rating3}
         />
       )}
       <div className={classes.buttonContainer}>

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CssBaseline, Container, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from "../../components/header";
 import FriendCard from '../../components/friendCard';
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,43 +50,61 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const friends = [
-  {
-      name: "Lucas Santos",
-      favMovie: "Deadpool & Wolverine",
-      favGenre: "Suspense"
-  },
-  {
-      name: "Vinícius Pinheiro",
-      favMovie: "Dorme comigo e você será mãe",
-      favGenre: "Comédia"
-  },
-  {
-      name: "Marcela Caram",
-      favMovie: "A tesoura mortal",
-      favGenre: "Policial"
-  },
-  {
-      name: "Terry Crews",
-      favMovie: "As Branquelas",
-      favGenre: "Comédia"
-  },
-  {
-      name: "João Pereira",
-      favMovie: "The Godfather",
-      favGenre: "Crime"
-  },
-];
+// const friends = [
+//   {
+//       name: "Lucas Santos",
+//       favMovie: "Deadpool & Wolverine",
+//       favGenre: "Suspense"
+//   },
+//   {
+//       name: "Vinícius Pinheiro",
+//       favMovie: "Dorme comigo e você será mãe",
+//       favGenre: "Comédia"
+//   },
+//   {
+//       name: "Marcela Caram",
+//       favMovie: "A tesoura mortal",
+//       favGenre: "Policial"
+//   },
+//   {
+//       name: "Terry Crews",
+//       favMovie: "As Branquelas",
+//       favGenre: "Comédia"
+//   },
+//   {
+//       name: "João Pereira",
+//       favMovie: "The Godfather",
+//       favGenre: "Crime"
+//   },
+// ];
 
 const Friends = () => {
   const classes = useStyles();
   const [showAll, setShowAll] = useState(false);
+  const { getUsers } = useAuth();
+  const [friends, setFriends] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const data = await getUsers();
+    console.log(data);
+    setFriends(data);
+  };
 
   const displayedFriends = showAll ? friends : friends.slice(0, 4);
 
   const handleToggleShowAll = () => {
     setShowAll(prevShowAll => !prevShowAll);
   };
+
+  const handleCardClick = (friend) => {
+    navigate(`../friendProfile`, { state: { friend } });
+  };
+
 
   return (
     <div className={classes.root}>
@@ -93,7 +113,7 @@ const Friends = () => {
         <CssBaseline />
         <div className={classes.container}>
           {displayedFriends.map((friend) => (
-            <FriendCard key={friend.name} friend={friend} component={Link} to="../friendProfile" />
+            <FriendCard key={friend.id} friend={friend} onClick={handleCardClick} />
           ))}
           <Button 
             variant="contained" 

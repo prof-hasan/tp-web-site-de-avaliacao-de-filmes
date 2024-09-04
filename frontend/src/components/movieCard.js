@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       transform: 'scale(1.02)',
     },
+    cursor: 'pointer', 
   },
   poster: {
     width: theme.spacing(9),
@@ -58,11 +59,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MovieCard = ({ movie, component: Component = 'div', ...props }) => {
+const MovieCard = ({ movie, onClick, component: Component = 'div', ...props }) => {
   const classes = useStyles();
 
+  const handleCardClick = () => {
+    if (onClick) {
+      onClick(movie);  // Chame a função onClick passando o filme
+    }
+  };
+  
   return (
-    <Box className={classes.card} component={Component} {...props}>
+    <Box className={classes.card} component={Component} {...props} onClick={handleCardClick}>
       <Avatar className={classes.poster} src={require(`../assets/capasDosFilmes/${movie.image}`)} />
       <Box className={classes.details}>
         <Box className={classes.titleGenre}>
@@ -76,7 +83,6 @@ const MovieCard = ({ movie, component: Component = 'div', ...props }) => {
         <Typography variant="body2">{movie.releaseDate}</Typography>
         <Avatar
           className={classes.platformIcon}
-
           alt={movie.platform}
         />
         {movie.rating ? (

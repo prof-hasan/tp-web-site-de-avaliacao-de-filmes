@@ -2,6 +2,7 @@ import React from 'react';
 import { Avatar, Box, Typography, Link as MuiLink } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
       transform: 'scale(1.02)',
     },
     textDecoration: 'none', // Remove underline on hover
+    cursor: 'pointer', 
   },
   avatar: {
     width: theme.spacing(9),
@@ -54,12 +56,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FriendCard = ({ friend, component: Component = 'div', ...props }) => {
+const FriendCard = ({ friend,  onClick,component: Component = 'div', ...props }) => {
   const classes = useStyles();
+
+  const handleCardClick = () => {
+    if (onClick) {
+      onClick(friend);  // Chame a função onClick passando o filme
+    }
+  };
   const avatarImage = `../../public/usersAvatar/${friend.name.replace(/\s/g, '_')}.jpg`;
 
   return (
-    <Box className={classes.card} component={Component} {...props}>
+    <Box className={classes.card} component={Component} {...props} onClick={handleCardClick}>
       <Avatar className={classes.avatar} src={avatarImage} />
       <Box className={classes.details}>
         <Box className={classes.nameCard}>
@@ -69,10 +77,10 @@ const FriendCard = ({ friend, component: Component = 'div', ...props }) => {
         </Box>
         <Box className={classes.fav}>
           <Box className={classes.favMovie}>
-            <Typography variant="body1">Filme favorito: {friend.favMovie}</Typography>
+            <Typography variant="body1">Filme favorito: {friend.favoriteMovie}</Typography>
           </Box>
           <Box className={classes.favGenre}>
-            <Typography variant="body1">Gênero favorito: {friend.favGenre}</Typography>
+            <Typography variant="body1">Gênero favorito: {friend.favoriteGenre}</Typography>
           </Box>
         </Box>
       </Box>

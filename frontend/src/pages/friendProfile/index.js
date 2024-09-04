@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import catalogoImg from '../../assets/catalogo.png';
 import { Link } from "react-router-dom";
 import MovieBox from "../../components/movieBox";
+import { useLocation } from 'react-router-dom';
 
 import image1 from "../../assets/capasDosFilmes/heroes.jpg";
 import image2 from "../../assets/capasDosFilmes/stepmom.jpg";
@@ -129,8 +130,8 @@ const list = [
 const FriendProfile = () => {
   const classes = useStyles();
   const avatarImage = `../../public/usersAvatar/.jpg`;
-//   const avatarImage = `../../public/usersAvatar/${friend.name.replace(/\s/g, '_')}.jpg`;
-
+  const location = useLocation();
+  const { friend } = location.state;
   const [currentListIndex, setCurrentListIndex] = useState(0);
   const [currentGenreIndex, setCurrentGenreIndex] = useState(0);
 
@@ -166,11 +167,11 @@ const FriendProfile = () => {
         <div className={classes.boxBody}>
           <Avatar className={classes.avatar} src={avatarImage} />
           <div className={classes.textDiv}>
-            <Typography className={classes.friendName}> Amigo #1 </Typography>
+            <Typography className={classes.friendName}> {friend.name} </Typography>
             <Typography className={classes.friendText}> Data de entrada: 20 de março de 2024 </Typography>
-            <Typography className={classes.friendText}> 38 filmes avaliados </Typography>
-            <Typography className={classes.friendText}> Gênero favorito: Comédia, Suspense </Typography>
-            <Typography className={classes.friendText}> Filme favorito: O Poderoso Chefão </Typography>
+            <Typography className={classes.friendText}> {friend.evaluatedFilms}</Typography>
+            <Typography className={classes.friendText}> Gênero favorito: {friend.favoriteGenre} </Typography>
+            <Typography className={classes.friendText}> Filme favorito: {friend.favoriteMovie} </Typography>
           </div>
         </div>
         <div className={classes.sectionTitle}>Listas</div>
