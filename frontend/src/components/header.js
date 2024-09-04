@@ -105,7 +105,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('loggedInUser');
     setLoggedInUser(null);
-    // navigate('/login'); 
+    navigate('/'); 
   };
 
   return (
@@ -163,9 +163,9 @@ const Header = () => {
                 <Button color="inherit">Login</Button>
               </Link>
             )}
-            {/* <Link to="/profile"> */}
+            <Link to="/profile">
               <Avatar src="/broken-image.jpg" />
-            {/* </Link> */}
+            </Link>
           </div>
         </Toolbar>
       </AppBar>
