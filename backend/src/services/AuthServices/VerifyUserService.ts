@@ -1,8 +1,8 @@
-import User from "../../classes/User";
+import UserClients from "../../classes/UserClients";
 
 
-const VerifyUserService = async (username : string, password: string): Promise<User> => {
-  const user: User  = await User.findOne({
+const VerifyUserService = async (username : string, password: string): Promise<UserClients> => {
+  const user: UserClients  = await UserClients.findOne({
     where: {
       username,
       password
