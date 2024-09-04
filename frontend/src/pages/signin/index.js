@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { Link as RouterLink, useNavigate, redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   Button,
   CssBaseline,
@@ -8,11 +8,11 @@ import {
   Container,
   InputAdornment,
   IconButton,
-  Link,
   Divider,
-  Snackbar
+  Snackbar,
+  Link,
+  Alert
 } from '@material-ui/core';
-import Header from "../../components/header";
 import { makeStyles } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import logo from "../../assets/logo-lvm3.svg";
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     textAlign: "center",
     padding: theme.spacing(2),
-    height: 'auto', // Altere aqui
+    height: 'auto',
     width: '50%',
     borderRadius: theme.spacing(2),
     boxShadow: "0px 5px 9px rgba(0, 0, 0, 0.5)",
@@ -79,8 +79,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Signin = () => {
   const classes = useStyles();
-  const [user, setUser] = useState({ name: "", username: "", password: "" });
+  const [user, setUser] = useState({ name: "", username: "", password: "", confirmPassword: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
   const { createUser } = useSignIn();
   const navigation = useNavigate();
 
@@ -90,7 +91,12 @@ const Signin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    create();
+    if (user.password !== user.confirmPassword) {
+      setError("As senhas não coincidem.");
+    } else {
+      setError("");
+      create();
+    }
   };
 
   const create = async () => {
@@ -103,18 +109,18 @@ const Signin = () => {
       };
   
       const data = await createUser(newUser);
-      if(data){
+      if (data) {
         alert("Usuário criado com sucesso!");
         redirectLogin();
       }
-    }catch(err){
-        console.error(err)
+    } catch (err) {
+      console.error(err);
     }
   };
 
   const redirectLogin = () => {
-    navigation("/login")
-  }
+    navigation("/login");
+  };
   
   return (
     <div className={classes.root}>
@@ -208,6 +214,11 @@ const Signin = () => {
                     )
                     }}
                 />
+                {error && (
+                  <Typography variant="body2" color="error">
+                    {error}
+                  </Typography>
+                )}
                 <Button
                     type="submit"
                     size="large"
