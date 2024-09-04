@@ -7,7 +7,7 @@ import Header from "../../components/header";
 import SearchIcon from '@mui/icons-material/Search';
 import { makeStyles } from "@material-ui/core/styles";
 import catalogoImg from '../../assets/catalogo.png';
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -91,8 +91,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-
+  const [searchTerm, setSearchTerm] = useState('');
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      navigate(`/movielisting?search=${searchTerm}`);
+    }
+  };
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -110,6 +117,9 @@ const Home = () => {
             className={classes.searchField}
             variant="outlined"
             placeholder="Buscar filme, diretor, gênero..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
             InputProps={{
               classes: {
                 input: classes.input,

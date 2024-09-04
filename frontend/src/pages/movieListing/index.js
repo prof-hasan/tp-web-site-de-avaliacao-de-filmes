@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Header from "../../components/header";
 import MovieCard from '../../components/movieCard';
 import useMovies from "../../hooks/useMovies";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,68 +20,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const movies = [
-//   {
-//     title: "Super Bad",
-//     genre: "Comédia/Adolescente",
-//     duration: "1h 59m",
-//     year: 2007,
-//     platform: "Netflix",
-//     rating: 3,
-//     seen: true
-//   },
-//   {
-//     title: "Vingadores: Ultimato",
-//     genre: "Ação/Ficção Científica",
-//     duration: "3h 2m",
-//     year: 2019,
-//     platform: "Disney+",
-//     rating: 5,
-//     seen: true
-//   },
-//   {
-//     title: "Um sonho de liberdade",
-//     genre: "Thriller/Ficção Policial",
-//     duration: "2h 22m",
-//     year: 1994,
-//     platform: "HBO Max",
-//     rating: 5,
-//     seen: true
-//   },
-//   {
-//     title: "Não olhe para cima",
-//     genre: "Comédia/Ficção Científica",
-//     duration: "2h 18m",
-//     year: 2021,
-//     platform: "Netflix",
-//     rating: 0, 
-//     seen: false
-//   },
-//   {
-//     title: "Pobres Criaturas",
-//     genre: "Comédia/Ficção Científica",
-//     duration: "2h 2m",
-//     year: 2023,
-//     platform: "Star+",
-//     rating: 2,
-//     seen: false
-//   },
-// ];
 
 const MovieListing = () => {
   const classes = useStyles();
   const { getMovies } = useMovies();
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    getData();
-  }, []);
+    const searchParams = new URLSearchParams(location.search);
+    const searchTerm = searchParams.get('search');
+    getData(searchTerm);
+  }, [location.search]);
 
-  const getData = async () => {
+  const getData = async (searchTerm) => {
     const data = await getMovies();
-    console.log(data);
-    setMovies(data);
+    if (searchTerm) {
+      const filteredMovies = data.filter(movie =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setMovies(filteredMovies);
+    } else {
+      setMovies(data);
+    }
   };
 
   const handleCardClick = (movie) => {
