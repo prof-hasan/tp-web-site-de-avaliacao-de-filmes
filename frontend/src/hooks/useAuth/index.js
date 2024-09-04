@@ -21,9 +21,19 @@ const useAuth = () => {
     }
   };
 
+  const editUsers = async (userData) => {
+    try {
+      const { data } = await api.put("/editUsers", userData);
+      console.log(data);
+    }catch(err){
+        console.error(err)
+    }
+  };
+
   return {
     handleLogin,
-    getUsers
+    getUsers,
+    editUsers
   };
 
 

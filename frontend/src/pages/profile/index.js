@@ -3,6 +3,7 @@ import { Container, Avatar, TextField, Button, Typography } from '@material-ui/c
 import Header from "../../components/header";
 import { makeStyles } from "@material-ui/core/styles";
 import image1 from "../../assets/capasDosFilmes/heroes.jpg";
+import useAuth from '../../hooks/useAuth';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -96,6 +97,7 @@ const Profile = () => {
   const [isEditingMovie, setIsEditingMovie] = useState(false);
   const [newFavoriteGenre, setNewFavoriteGenre] = useState("");
   const [newFavoriteMovie, setNewFavoriteMovie] = useState("");
+  const { editUsers } = useAuth();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -104,15 +106,19 @@ const Profile = () => {
       setNewFavoriteGenre(user.favoriteGenre || "");
       setNewFavoriteMovie(user.favoriteMovie || "");
     }
+    
   }, []);
 
-  const handleSaveChanges = () => {
+  const handleSaveChanges = async () => {
     if (loggedInUser) {
+      console.log(loggedInUser);
       const updatedUser = {
         ...loggedInUser,
         favoriteGenre: newFavoriteGenre,
         favoriteMovie: newFavoriteMovie,
       };
+      
+      const data = await editUsers(updatedUser);
       localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
       setLoggedInUser(updatedUser);
     }
