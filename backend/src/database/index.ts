@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import UserClients from "../classes/UserClients";
 import MoviesList from "../classes/MoviesList";
+import Movies from "../classes/Movies";
 
 
 // eslint-disable-next-line
@@ -12,6 +13,7 @@ const sequelize = new Sequelize(dbConfig);
 const models = [
     UserClients,
     MoviesList,
+    Movies,
 ];
 
 sequelize.addModels(models);

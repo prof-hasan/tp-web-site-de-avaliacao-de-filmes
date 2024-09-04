@@ -63,7 +63,7 @@ const MovieCard = ({ movie, component: Component = 'div', ...props }) => {
 
   return (
     <Box className={classes.card} component={Component} {...props}>
-      <Avatar className={classes.poster} src={`path_to_images/${movie.title.replace(/\s/g, '_')}.jpg`} />
+      <Avatar className={classes.poster} src={require(`../assets/capasDosFilmes/${movie.image}`)} />
       <Box className={classes.details}>
         <Box className={classes.titleGenre}>
           <Box className={classes.title}>
@@ -73,10 +73,10 @@ const MovieCard = ({ movie, component: Component = 'div', ...props }) => {
           <Typography variant="body2">{movie.genre}</Typography>
         </Box>
         <Typography variant="body2">{movie.duration}</Typography>
-        <Typography variant="body2">{movie.year}</Typography>
+        <Typography variant="body2">{movie.releaseDate}</Typography>
         <Avatar
           className={classes.platformIcon}
-          src={`path_to_platform_icons/${movie.platform.toLowerCase()}.png`}
+
           alt={movie.platform}
         />
         {movie.rating ? (
