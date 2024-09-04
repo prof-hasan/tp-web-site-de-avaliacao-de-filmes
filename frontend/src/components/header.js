@@ -157,15 +157,15 @@ const Header = () => {
                   Olá, {loggedInUser.username}
                 </Typography>
                 <Button className={classes.logoutButton} onClick={handleLogout}>Logout</Button>
+                <Link to="/profile">
+                  <Avatar src="/broken-image.jpg" />
+                </Link>
               </>
             ) : (
               <Link to="/login" className={classes.loginText}>
                 <Button color="inherit">Login</Button>
               </Link>
             )}
-            <Link to="/profile">
-              <Avatar src="/broken-image.jpg" />
-            </Link>
           </div>
         </Toolbar>
       </AppBar>
