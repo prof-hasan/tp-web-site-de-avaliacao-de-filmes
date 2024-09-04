@@ -2,42 +2,50 @@ import { QueryInterface, DataTypes } from "sequelize";
 
 module.exports = {
   up: async (queryInterface: QueryInterface) => {
-    await queryInterface.createTable("User", {
+    await queryInterface.createTable("Movies", {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
-      name: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      username: {
+      releaseDate: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
       },
-      password: {
+      genre: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      favoriteMovie: {
+      director: {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      favoriteGenre: {
+      actors: {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      evaluatedFilms: {
+      awards: {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      duration: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      }
     });
   },
 
   down: async (queryInterface: QueryInterface) => {
-    await queryInterface.dropTable("User");
+    await queryInterface.dropTable("Movies");
   }
 };
