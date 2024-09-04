@@ -50,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   platformIcon: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
+    width: theme.spacing(5),
+    height: theme.spacing(5),
   },
   checkIcon: {
     marginLeft: theme.spacing(1),
@@ -67,6 +67,18 @@ const MovieCard = ({ movie, onClick, component: Component = 'div', ...props }) =
       onClick(movie);  // Chame a função onClick passando o filme
     }
   };
+
+  const [month, day, year] = movie.releaseDate.split('/').map(Number);
+  const title = movie.title[0];
+  let icon;
+
+  if (title < 'H') {
+    icon = require('../assets/icons8-netflix-50.png')
+  } else if (title < 'O') {
+    icon = require('../assets/icons8-hbo-64.png')
+  } else {
+    icon = require('../assets/icons8-disney-50.png')
+  }
   
   return (
     <Box className={classes.card} component={Component} {...props} onClick={handleCardClick}>
@@ -80,8 +92,9 @@ const MovieCard = ({ movie, onClick, component: Component = 'div', ...props }) =
           <Typography variant="body2">{movie.genre}</Typography>
         </Box>
         <Typography variant="body2">{movie.duration}</Typography>
-        <Typography variant="body2">{movie.releaseDate}</Typography>
+        <Typography variant="body2">{year}</Typography>
         <Avatar
+          src={icon}
           className={classes.platformIcon}
           alt={movie.platform}
         />
