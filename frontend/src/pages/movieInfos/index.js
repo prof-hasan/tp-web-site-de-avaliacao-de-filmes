@@ -66,7 +66,7 @@ const App = () => {
         duration={movie.duration}
         director={movie.director}
         releaseDate={movie.releaseDate}
-        nominations={movie.nominations}
+        nominations={movie.awards}
         rating={movie.rating}
         imageUrl={movie.image}
       />

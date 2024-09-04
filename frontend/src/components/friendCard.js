@@ -64,7 +64,12 @@ const FriendCard = ({ friend,  onClick,component: Component = 'div', ...props })
       onClick(friend);  // Chame a função onClick passando o filme
     }
   };
-  const avatarImage = `../../public/usersAvatar/${friend.name.replace(/\s/g, '_')}.jpg`;
+
+  const avatarImage = friend.name 
+  ? `../../public/usersAvatar/${friend.name.replace(/\s/g, '_')}.jpg`
+  : '../../public/usersAvatar/default_avatar.jpg'; // Caminho para uma imagem padrão
+
+  // const avatarImage = `../../public/usersAvatar/${friend.name.replace(/\s/g, '_')}.jpg`;
 
   return (
     <Box className={classes.card} component={Component} {...props} onClick={handleCardClick}>

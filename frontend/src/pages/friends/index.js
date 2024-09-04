@@ -50,40 +50,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const friends = [
-//   {
-//       name: "Lucas Santos",
-//       favMovie: "Deadpool & Wolverine",
-//       favGenre: "Suspense"
-//   },
-//   {
-//       name: "Vinícius Pinheiro",
-//       favMovie: "Dorme comigo e você será mãe",
-//       favGenre: "Comédia"
-//   },
-//   {
-//       name: "Marcela Caram",
-//       favMovie: "A tesoura mortal",
-//       favGenre: "Policial"
-//   },
-//   {
-//       name: "Terry Crews",
-//       favMovie: "As Branquelas",
-//       favGenre: "Comédia"
-//   },
-//   {
-//       name: "João Pereira",
-//       favMovie: "The Godfather",
-//       favGenre: "Crime"
-//   },
-// ];
-
 const Friends = () => {
   const classes = useStyles();
   const [showAll, setShowAll] = useState(false);
   const { getUsers } = useAuth();
   const [friends, setFriends] = useState([]);
   const navigate = useNavigate();
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (user) {
+      setLoggedInUser(user);
+    }
+  }, []);
 
   useEffect(() => {
     getData();
@@ -91,8 +71,12 @@ const Friends = () => {
 
   const getData = async () => {
     const data = await getUsers();
-    console.log(data);
-    setFriends(data);
+    if (loggedInUser) {
+      const newData = data.filter(item => item && item.id !== loggedInUser.id)
+      setFriends(newData);
+    } else {
+      setFriends(data)
+    }
   };
 
   const displayedFriends = showAll ? friends : friends.slice(0, 4);
@@ -115,13 +99,6 @@ const Friends = () => {
           {displayedFriends.map((friend) => (
             <FriendCard key={friend.id} friend={friend} onClick={handleCardClick} />
           ))}
-          <Button 
-            variant="contained" 
-            className={`${classes.button} ${showAll ? classes.buttonShowLess : classes.buttonShowMore}`}
-            onClick={handleToggleShowAll}
-          >
-            {showAll ? 'Mostrar menos' : 'Mostrar mais'}
-          </Button>
         </div>
       </Container>
     </div>
