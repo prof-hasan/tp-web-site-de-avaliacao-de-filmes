@@ -11,6 +11,9 @@ Engenharia de computação
 ## Local e Data:
 Belo Horizonte, 2023
 
+## Link do vídeo:
+https://youtu.be/l4tBKfzm_NE
+
 ## 1) Descrição do site:
 LMV é uma plataforma online dedicada a entusiastas do cinema, oferecendo uma experiência completa para descobrir, organizar e compartilhar suas seleções de filmes favoritos com amigos. Com uma biblioteca de filmes e recursos interativos, o site é o destino ideal para quem busca uma experiência cinematográfica personalizada e socialmente conectada.
 
