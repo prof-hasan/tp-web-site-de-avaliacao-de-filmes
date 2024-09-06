@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
 
@@ -97,6 +98,12 @@ const Header = () => {
       setLoggedInUser(user);
     }
   }, []);
+
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      navigate(`/movielisting?search=${searchTerm}`);
+    }
+  };
 
   const handleSearchClick = () => {
     setIsSearchOpen(!isSearchOpen);
@@ -135,6 +142,9 @@ const Header = () => {
                 className={classes.searchField}
                 variant="outlined"
                 placeholder="Buscar..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                 InputProps={{
                   classes: { input: classes.input },
                   endAdornment: (
